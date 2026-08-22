@@ -60,3 +60,13 @@
   background: #a8a29e;
 }
 
+/* Hide scrollbar for clean horizontal mobile swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+

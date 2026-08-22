@@ -242,8 +242,8 @@ export const MenuPage = () => {
   return (
     <div className="flex w-full h-[calc(100vh-64px)] overflow-hidden bg-stone-50">
       
-      {/* ══════════════ LEFT FIXED SIDEBAR ══════════════ */}
-      <aside className="w-64 xl:w-72 shrink-0 bg-white border-r border-stone-200 h-full flex flex-col z-20 shadow-xs select-none">
+      {/* ══════════════ LEFT FIXED SIDEBAR (DESKTOP) ══════════════ */}
+      <aside className="hidden lg:flex w-64 xl:w-72 shrink-0 bg-white border-r border-stone-200 h-full flex-col z-20 shadow-xs select-none">
         
         {/* Sidebar Header */}
         <div className="px-5 py-4 border-b border-stone-100 flex items-center justify-between shrink-0 bg-white">
@@ -351,80 +351,134 @@ export const MenuPage = () => {
       {/* ══════════════ RIGHT INDEPENDENT SCROLL AREA ══════════════ */}
       <main
         ref={scrollContainerRef}
-        className="flex-1 h-full overflow-y-auto overflow-x-hidden flex flex-col bg-stone-50"
+        className="w-full flex-1 h-full overflow-y-auto overflow-x-hidden flex flex-col bg-stone-50"
       >
-        {/* Fixed / Sticky Search & Filter Bar at Top (Sleek Compact Height) */}
-        <div className="sticky top-0 z-20 bg-stone-50/95 backdrop-blur-md px-5 sm:px-7 xl:px-8 py-2 border-b border-stone-200/90 shadow-2xs">
-          <div className="bg-white rounded-xl p-1.5 sm:px-3 sm:py-1.5 border border-stone-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-3">
+        {/* Fixed / Sticky Search & Filter Bar at Top */}
+        <div className="sticky top-0 z-20 bg-stone-50/95 backdrop-blur-md px-3 sm:px-6 xl:px-8 py-2 border-b border-stone-200/90 shadow-2xs">
+          <div className="bg-white rounded-xl p-2 sm:px-3 sm:py-2 border border-stone-200 shadow-xs flex flex-col gap-2">
             
-            {/* Search Input */}
-            <div className="relative w-full md:w-72">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-stone-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search dishes, pizzas, burgers..."
-                className="w-full pl-8 pr-8 py-1.5 bg-stone-100 rounded-lg text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 border border-transparent focus:border-red-400 transition-all"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
+            {/* Top Row: Search + Sort */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+              {/* Search Input */}
+              <div className="relative w-full sm:flex-1 md:max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-stone-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search dishes, pizzas, burgers..."
+                  className="w-full pl-8 pr-8 py-1.5 bg-stone-100 rounded-lg text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-red-500/30 border border-transparent focus:border-red-400 transition-all"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+
+              {/* Controls Row: Quick Tag Filters + Sort */}
+              <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+                {/* Quick Tag Filters */}
+                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 max-w-[210px] xs:max-w-none">
+                  {[
+                    { id: 'all', label: 'All', icon: Utensils },
+                    { id: 'popular', label: 'Popular', icon: Star },
+                    { id: 'deals', label: 'Deals', icon: Tag },
+                    { id: 'new', label: 'New', icon: Sparkles },
+                    { id: 'spicy', label: 'Spicy', icon: Flame }
+                  ].map((tag) => {
+                    const IconComp = tag.icon;
+                    return (
+                      <button
+                        key={tag.id}
+                        type="button"
+                        onClick={() => setSelectedTag(tag.id)}
+                        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold font-display whitespace-nowrap transition-colors border cursor-pointer ${
+                          selectedTag === tag.id
+                            ? 'bg-red-600 text-white border-red-600 shadow-xs'
+                            : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200/80'
+                        }`}
+                      >
+                        <IconComp className="w-3 h-3" />
+                        <span>{tag.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="flex items-center gap-1 shrink-0">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="px-2 py-1 bg-stone-100 rounded-lg text-xs font-bold text-stone-800 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 cursor-pointer"
+                  >
+                    <option value="popular">Most Popular</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
-            {/* Quick Tag Filters */}
-            <div className="flex items-center gap-1 overflow-x-auto w-full md:w-auto no-scrollbar py-0.5">
-              {[
-                { id: 'all', label: 'All', icon: Utensils },
-                { id: 'popular', label: 'Popular', icon: Star },
-                { id: 'deals', label: 'Deals', icon: Tag },
-                { id: 'new', label: 'New', icon: Sparkles },
-                { id: 'spicy', label: 'Spicy', icon: Flame }
-              ].map((tag) => {
-                const IconComp = tag.icon;
+            {/* Mobile Categories Pill Scroller (Visible only on mobile/tablet < lg) */}
+            <div className="flex lg:hidden items-center gap-1.5 overflow-x-auto no-scrollbar pt-1.5 border-t border-stone-100">
+              <button
+                type="button"
+                onClick={() => handleCategorySelect('all')}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                  activeCategory === 'all'
+                    ? 'bg-red-600 text-white shadow-xs'
+                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                }`}
+              >
+                <Utensils className="w-3 h-3" />
+                <span>All ({foodsList.length})</span>
+              </button>
+
+              {categoriesList.map((cat) => {
+                const isSelected = activeCategory === cat.slug;
+                const count = foodsList.filter((f) => f.categoryId === cat.slug || f.categorySlug === cat.slug).length;
                 return (
                   <button
-                    key={tag.id}
+                    key={cat._id || cat.id || cat.slug}
                     type="button"
-                    onClick={() => setSelectedTag(tag.id)}
-                    className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-bold font-display whitespace-nowrap transition-colors border cursor-pointer ${
-                      selectedTag === tag.id
-                        ? 'bg-red-600 text-white border-red-600 shadow-xs'
-                        : 'bg-stone-100 text-stone-600 border-stone-200 hover:bg-stone-200/80'
+                    onClick={() => handleCategorySelect(cat.slug)}
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-red-600 text-white shadow-xs'
+                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
                     }`}
                   >
-                    <IconComp className="w-3 h-3" />
-                    <span>{tag.label}</span>
+                    <img
+                      src={cat.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'}
+                      alt={cat.name}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80';
+                      }}
+                      className="w-4 h-4 rounded-full object-cover shrink-0"
+                    />
+                    <span>{cat.name}</span>
+                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full ${
+                      isSelected ? 'bg-white/25 text-white' : 'bg-stone-200 text-stone-600'
+                    }`}>
+                      {count}
+                    </span>
                   </button>
                 );
               })}
-            </div>
-
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-1.5 w-full md:w-auto justify-end">
-              <span className="text-[11px] font-bold text-stone-400 hidden sm:inline">Sort:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-2.5 py-1 bg-stone-100 rounded-lg text-xs font-bold text-stone-800 border border-stone-200 focus:outline-none focus:ring-2 focus:ring-red-500/30 cursor-pointer"
-              >
-                <option value="popular">Most Popular</option>
-                <option value="rating">Highest Rated</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-              </select>
             </div>
           </div>
         </div>
 
         {/* Scrollable Food Items List */}
-        <div className="flex-1 px-5 sm:px-7 xl:px-8 py-6 space-y-6">
+        <div className="flex-1 px-3 sm:px-6 xl:px-8 py-4 sm:py-6 space-y-5 sm:space-y-6">
           
           {/* Results Summary Bar */}
           <div className="flex items-center justify-between text-xs text-stone-500 px-1 border-b border-stone-200 pb-3">
@@ -445,7 +499,7 @@ export const MenuPage = () => {
 
           {/* Food Items: Category-Wise Sections */}
           {groupedCategorySections.length === 0 ? (
-            <div className="bg-white rounded-2xl p-12 text-center border border-stone-200 my-4 shadow-xs">
+            <div className="bg-white rounded-2xl p-8 sm:p-12 text-center border border-stone-200 my-4 shadow-xs">
               <Utensils className="w-12 h-12 mx-auto text-stone-300 mb-3" />
               <h3 className="font-display font-bold text-lg text-stone-800">
                 No food items match your search
@@ -466,16 +520,16 @@ export const MenuPage = () => {
               </button>
             </div>
           ) : (
-            <div className="space-y-8 pb-16">
+            <div className="space-y-6 sm:space-y-8 pb-16">
               {groupedCategorySections.map(({ category, items }) => (
                 <section
                   key={category._id || category.id || category.slug}
                   id={`category-${category.slug}`}
-                  className="bg-white p-5 sm:p-7 rounded-2xl border border-stone-200/90 shadow-xs scroll-mt-6"
+                  className="bg-white p-3.5 sm:p-7 rounded-2xl border border-stone-200/90 shadow-xs scroll-mt-6"
                 >
                   {/* Category Header Banner */}
-                  <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-stone-100">
-                    <div className="flex items-center gap-3.5">
+                  <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-stone-100">
+                    <div className="flex items-center gap-3">
                       {category.image ? (
                         <img
                           src={category.image}
@@ -484,22 +538,22 @@ export const MenuPage = () => {
                             e.currentTarget.onerror = null;
                             e.currentTarget.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80';
                           }}
-                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl object-cover shadow-xs ring-1 ring-stone-200 shrink-0"
+                          className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl object-cover shadow-xs ring-1 ring-stone-200 shrink-0"
                         />
                       ) : (
-                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold shrink-0">
-                          <Utensils className="w-6 h-6" />
+                        <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center font-bold shrink-0">
+                          <Utensils className="w-5 h-5 sm:w-6 sm:h-6" />
                         </div>
                       )}
                       <div>
-                        <h2 className="font-display font-extrabold text-lg sm:text-xl text-stone-900 flex items-center gap-2.5">
+                        <h2 className="font-display font-extrabold text-base sm:text-xl text-stone-900 flex items-center gap-2">
                           <span>{category.name}</span>
-                          <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200/60">
+                          <span className="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200/60">
                             {items.length} {items.length === 1 ? 'Item' : 'Items'}
                           </span>
                         </h2>
                         {category.description && (
-                          <p className="text-xs text-stone-500 mt-0.5 line-clamp-1">
+                          <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 line-clamp-1">
                             {category.description}
                           </p>
                         )}
@@ -526,7 +580,7 @@ export const MenuPage = () => {
                   </div>
 
                   {/* Responsive Food Cards Grid */}
-                  <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+                  <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3.5 sm:gap-6">
                     <AnimatePresence>
                       {items.map((food) => (
                         <FoodCard
