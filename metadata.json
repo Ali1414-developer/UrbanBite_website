@@ -1,0 +1,6 @@
+{
+  "name": "UrbanBite",
+  "description": "UrbanBite - Modern restaurant food ordering platform featuring handcrafted burgers, crispy chicken, pizzas, wraps, multi-branch locator, live cart, and seamless ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
