@@ -163,13 +163,20 @@ export const CheckoutPage = () => {
       const orderPayload = {
         idempotencyKey,
         userId: currentUser?.id || 'usr-1',
-        restaurant: selectedBranch || {
-          id: 'urbanbite-dha-lahore',
-          name: 'UrbanBite DHA Phase 6',
-          city: formData.city,
-          address: 'Sector CCA, Block MB, DHA Phase 6',
-          phone: '+92 42 3574 8891'
-        },
+        restaurant: selectedBranch ? {
+          id: selectedBranch.id || selectedBranch.slug || selectedBranch._id,
+          slug: selectedBranch.slug || selectedBranch.id,
+          name: selectedBranch.name,
+          city: selectedBranch.city || formData.city || 'Lahore',
+          address: selectedBranch.address || '',
+          phone: selectedBranch.phone || ''
+        } : (
+          formData.city === 'Islamabad'
+            ? { id: 'urbanbite-f7-islamabad', slug: 'urbanbite-f7-islamabad', name: 'UrbanBite F-7 Markaz', city: 'Islamabad', address: 'Shop 12-14, Jinnah Super Market, F-7 Markaz', phone: '+92 51 265 4488' }
+            : formData.city === 'Multan'
+            ? { id: 'urbanbite-cantt-multan', slug: 'urbanbite-cantt-multan', name: 'UrbanBite Cantt Multan', city: 'Multan', address: 'Mall Plaza, Nusrat Road, Multan Cantt', phone: '+92 61 458 9912' }
+            : { id: 'urbanbite-gulberg-lahore', slug: 'urbanbite-gulberg-lahore', name: 'UrbanBite Gulberg Main Blvd', city: 'Lahore', address: '94-B/1, Main Boulevard Gulberg III', phone: '+92 42 3571 2244' }
+        ),
         items: cartItems.map((item) => ({
           foodId: item.foodId,
           id: item.foodId,
