@@ -1,28 +1,9 @@
 /**
- * UrbanBite Restaurant Branches in Pakistan
+ * UrbanBite Restaurant Branches in Pakistan (Single Branch Per City)
  */
 
 export const restaurants = [
   // Lahore
-  {
-    id: 'urbanbite-dha-lahore',
-    name: 'UrbanBite DHA Phase 6',
-    slug: 'urbanbite-dha-lahore',
-    city: 'Lahore',
-    citySlug: 'lahore',
-    address: 'Sector CCA, Block MB, DHA Phase 6, Lahore',
-    phone: '+92 42 3574 8891',
-    timing: '11:00 AM - 02:00 AM',
-    rating: 4.8,
-    reviewCount: 680,
-    isOpen: true,
-    distance: '2.4 km away',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    description: 'Our flagship modern dine-in experience in DHA Lahore with indoor lounge seating, drive-thru, and fast delivery hub.',
-    facilities: ['Drive-Thru', 'Dine-In', 'Takeaway', 'Valet Parking', 'Free Wi-Fi', 'Outdoor Patio', 'Kids Play Corner'],
-    coords: { lat: 31.4721, lng: 74.4093 }
-  },
   {
     id: 'urbanbite-gulberg-lahore',
     name: 'UrbanBite Gulberg Main Blvd',
@@ -41,25 +22,6 @@ export const restaurants = [
     description: 'Bustling multi-story restaurant and open-kitchen diner in the heart of Gulberg commercial district.',
     facilities: ['Dine-In', 'Takeaway', 'Late Night Hub', 'Free Wi-Fi', 'Wheelchair Accessible', 'Party Hall'],
     coords: { lat: 31.5204, lng: 74.3587 }
-  },
-  {
-    id: 'urbanbite-johar-town-lahore',
-    name: 'UrbanBite Johar Town G-1 Market',
-    slug: 'urbanbite-johar-town-lahore',
-    city: 'Lahore',
-    citySlug: 'lahore',
-    address: 'Plot 412, Block G-1, Main Boulevard Johar Town, Lahore',
-    phone: '+92 42 3531 6670',
-    timing: '12:00 PM - 01:00 AM',
-    rating: 4.7,
-    reviewCount: 430,
-    isOpen: true,
-    distance: '6.8 km away',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    description: 'Family-friendly spacious outlet near Emporium with fast kitchen pickup and dedicated express delivery fleet.',
-    facilities: ['Dine-In', 'Takeaway', 'Kids Play Area', 'Free Wi-Fi', 'Ample Parking'],
-    coords: { lat: 31.4697, lng: 74.2728 }
   },
 
   // Islamabad
@@ -82,44 +44,6 @@ export const restaurants = [
     facilities: ['Terrace Seating', 'Dine-In', 'Takeaway', 'Artisan Coffee Bar', 'Free High-Speed Wi-Fi'],
     coords: { lat: 33.7215, lng: 73.0558 }
   },
-  {
-    id: 'urbanbite-blue-area-islamabad',
-    name: 'UrbanBite Blue Area',
-    slug: 'urbanbite-blue-area-islamabad',
-    city: 'Islamabad',
-    citySlug: 'islamabad',
-    address: 'Ground Floor, ISE Towers, Jinnah Avenue, Blue Area, Islamabad',
-    phone: '+92 51 280 1190',
-    timing: '09:00 AM - 01:00 AM',
-    rating: 4.8,
-    reviewCount: 610,
-    isOpen: true,
-    distance: '3.5 km away',
-    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80',
-    description: 'Corporate hub branch serving speedy breakfast, artisanal lunch smashes and late-night office cravings.',
-    facilities: ['Express Lunch Counter', 'Dine-In', 'Takeaway', 'Meeting Pods', 'Free Wi-Fi'],
-    coords: { lat: 33.7101, lng: 73.0674 }
-  },
-  {
-    id: 'urbanbite-bahria-town-islamabad',
-    name: 'UrbanBite Bahria Town Phase 7',
-    slug: 'urbanbite-bahria-town-islamabad',
-    city: 'Islamabad',
-    citySlug: 'islamabad',
-    address: 'River View Commercial, Phase 7, Bahria Town, Rawalpindi / Islamabad',
-    phone: '+92 51 570 3344',
-    timing: '12:00 PM - 02:00 AM',
-    rating: 4.7,
-    reviewCount: 490,
-    isOpen: true,
-    distance: '12.4 km away',
-    image: 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    description: 'Vibrant riverside promenade branch featuring expansive family seating, drive-thru lanes, and dessert bar.',
-    facilities: ['Drive-Thru', 'Dine-In', 'River View Patio', 'Valet Parking', 'Kids Zone'],
-    coords: { lat: 33.5353, lng: 73.1096 }
-  },
 
   // Multan
   {
@@ -140,24 +64,5 @@ export const restaurants = [
     description: 'Premier culinary destination in Cantt featuring gourmet burger creations and artisan pizzas.',
     facilities: ['Dine-In', 'Takeaway', 'Family Hall', 'Free Wi-Fi', 'Parking'],
     coords: { lat: 30.1878, lng: 71.4428 }
-  },
-  {
-    id: 'urbanbite-bosan-road-multan',
-    name: 'UrbanBite Bosan Road',
-    slug: 'urbanbite-bosan-road-multan',
-    city: 'Multan',
-    citySlug: 'multan',
-    address: 'Near Gulgasht Colony, Main Bosan Road, Multan',
-    phone: '+92 61 622 7700',
-    timing: '12:00 PM - 02:00 AM',
-    rating: 4.7,
-    reviewCount: 310,
-    isOpen: true,
-    distance: '7.0 km away',
-    image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    description: 'Youth-centric lively hangout hub next to Gulgasht with late night delivery and arcade gaming corner.',
-    facilities: ['Dine-In', 'Takeaway', 'Gaming Lounge', 'Free Wi-Fi'],
-    coords: { lat: 30.2312, lng: 71.4889 }
   }
 ];
