@@ -47,7 +47,7 @@ export const ContactPage = () => {
     },
     {
       q: 'What are UrbanBite delivery hours?',
-      a: 'Our branches operate express delivery from 11:00 AM to 02:00 AM daily across Lahore, Islamabad, Multan, and Faisalabad.'
+      a: 'Our branches operate express delivery from 11:00 AM to 02:00 AM daily across Lahore, Islamabad, and Multan.'
     },
     {
       q: 'Do you offer party and corporate catering?',

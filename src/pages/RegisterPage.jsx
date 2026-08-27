@@ -176,7 +176,6 @@ export const RegisterPage = () => {
                 <option value="Lahore">Lahore</option>
                 <option value="Islamabad">Islamabad</option>
                 <option value="Multan">Multan</option>
-                <option value="Faisalabad">Faisalabad</option>
               </select>
             </div>
 

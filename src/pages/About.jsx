@@ -31,7 +31,7 @@ export const About = () => {
               UrbanBite was born out of a simple passion: to serve restaurant-grade, freshly smashed beef burgers, hand-breaded crispy zinger chicken, and artisanal pizzas made with zero compromises on quality.
             </p>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              We source our prime beef from certified local farms, grind our patties daily, and deliver food hot with state-of-the-art thermal packaging technology across Lahore, Islamabad, Multan, and Faisalabad.
+              We source our prime beef from certified local farms, grind our patties daily, and deliver food hot with state-of-the-art thermal packaging technology across Lahore, Islamabad, and Multan.
             </p>
           </div>
 

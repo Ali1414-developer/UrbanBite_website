@@ -11,7 +11,7 @@ export const LocationModal = () => {
 
   if (!isLocationModalOpen) return null;
 
-  const displayCities = cities && cities.length > 0 ? cities : ['Lahore', 'Islamabad', 'Multan', 'Faisalabad'];
+  const displayCities = cities && cities.length > 0 ? cities : ['Lahore', 'Islamabad', 'Multan'];
   const branchesInCity = branches.filter((r) => r.city && r.city.toLowerCase() === selectedCity.toLowerCase());
 
   const handleBranchSelect = (branch) => {

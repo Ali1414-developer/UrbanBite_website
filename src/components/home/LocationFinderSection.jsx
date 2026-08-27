@@ -11,7 +11,7 @@ export const LocationFinderSection = () => {
   const navigate = useNavigate();
   const { branches = [], cities = [], changeBranch } = useLocation();
 
-  const displayCities = ['All', ...(cities.length > 0 ? cities : ['Lahore', 'Islamabad', 'Multan', 'Faisalabad'])];
+  const displayCities = ['All', ...(cities.length > 0 ? cities : ['Lahore', 'Islamabad', 'Multan'])];
 
   const filteredBranches =
     activeCity === 'All'

@@ -132,7 +132,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                <span>{settings?.defaultBranch ? `${settings.defaultBranch} • Express Delivery` : 'Lahore • Islamabad • Multan • Faisalabad'}</span>
+                <span>{settings?.defaultBranch ? `${settings.defaultBranch} • Express Delivery` : 'Lahore • Islamabad • Multan'}</span>
               </li>
             </ul>
 

@@ -101,7 +101,7 @@ export const RestaurantsPage = () => {
               Our Restaurant Branches
             </h1>
             <p className="text-stone-600 text-sm sm:text-base mt-2 leading-relaxed">
-              Discover UrbanBite dining rooms, drive-thrus, and express kitchen hubs across Lahore, Islamabad, Multan, and Faisalabad.
+              Discover UrbanBite dining rooms, drive-thrus, and express kitchen hubs across Lahore, Islamabad, and Multan.
             </p>
           </div>
         </div>

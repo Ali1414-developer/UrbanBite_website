@@ -18,7 +18,6 @@ export const CITIES = [
   { id: 'lahore', name: 'Lahore', areas: ['DHA', 'Gulberg', 'Johar Town', 'Model Town'] },
   { id: 'islamabad', name: 'Islamabad', areas: ['F-7', 'Blue Area', 'Bahria Town', 'G-11'] },
   { id: 'multan', name: 'Multan', areas: ['Cantt', 'Bosan Road', 'Gulgasht'] },
-  { id: 'faisalabad', name: 'Faisalabad', areas: ['D-Ground', 'People Colony', 'Canal Road'] },
 ];
 
 export const FOOD_CATEGORIES = [

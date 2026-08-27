@@ -159,26 +159,5 @@ export const restaurants = [
     description: 'Youth-centric lively hangout hub next to Gulgasht with late night delivery and arcade gaming corner.',
     facilities: ['Dine-In', 'Takeaway', 'Gaming Lounge', 'Free Wi-Fi'],
     coords: { lat: 30.2312, lng: 71.4889 }
-  },
-
-  // Faisalabad
-  {
-    id: 'urbanbite-dground-faisalabad',
-    name: 'UrbanBite D-Ground Peoples Colony',
-    slug: 'urbanbite-dground-faisalabad',
-    city: 'Faisalabad',
-    citySlug: 'faisalabad',
-    address: 'Plot 18, Commercial D-Ground, Peoples Colony No. 1, Faisalabad',
-    phone: '+92 41 871 5566',
-    timing: '12:00 PM - 02:00 AM',
-    rating: 4.9,
-    reviewCount: 540,
-    isOpen: true,
-    distance: '3.1 km away',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
-    coverImage: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80',
-    description: 'Prime commercial hub location at D-Ground with open live burger grill stations and dessert lounge.',
-    facilities: ['Live Grill View', 'Dine-In', 'Takeaway', 'Family Floor', 'Free Wi-Fi'],
-    coords: { lat: 31.4116, lng: 73.1119 }
   }
 ];
