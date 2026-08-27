@@ -75,7 +75,7 @@ export const LocationModal = () => {
             <label className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 block">
               1. Choose City
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {displayCities.map((city) => {
                 const isSelected = selectedCity.toLowerCase() === city.toLowerCase();
                 return (

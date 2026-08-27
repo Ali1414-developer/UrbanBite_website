@@ -74,19 +74,19 @@ export const LocationFinderSection = () => {
           ))}
         </div>
 
-        {/* Branches Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Branches Grid — 3 Equal Balanced Columns in One Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
           {filteredBranches.map((branch, index) => {
             const { isOpen, openTime } = getBranchStatusInfo(branch);
 
             return (
               <motion.div
-                key={branch.id}
+                key={branch.id || branch.slug || index}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.08 }}
-                className={`bg-white rounded-3xl p-6 border shadow-xs transition-all duration-300 flex flex-col justify-between ${
+                className={`bg-white rounded-3xl p-6 border shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full ${
                   isOpen
                     ? 'border-stone-200 hover:border-red-400/90 hover:shadow-[0_16px_36px_rgba(239,68,68,0.26)]'
                     : 'border-red-200/80 bg-stone-50/50'
@@ -142,7 +142,7 @@ export const LocationFinderSection = () => {
 
                   {/* Facilities Pills */}
                   <div className="flex flex-wrap gap-1 mt-3">
-                    {branch.facilities.slice(0, 3).map((f, i) => (
+                    {(branch.facilities || ['Dine-In', 'Takeaway', 'Express Delivery']).slice(0, 3).map((f, i) => (
                       <span
                         key={i}
                         className="px-2 py-0.5 rounded-md bg-white border border-stone-200 text-[10px] font-medium text-stone-600"
